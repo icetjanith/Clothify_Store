@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeDashboardFormController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="285.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="513.0" fitWidth="387.0" layoutX="14.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/4198783.jpg" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="513.0" layoutY="108.0" onAction="#btnCustomerOnAction" prefHeight="43.0" prefWidth="163.0" style="-fx-background-color: black;" text="Customer Form" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="513.0" layoutY="195.0" onAction="#btnItemOnAction" prefHeight="43.0" prefWidth="163.0" style="-fx-background-color: black;" text="Item Form" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="513.0" layoutY="280.0" onAction="#btnOrderOnAction" prefHeight="43.0" prefWidth="163.0" style="-fx-background-color: black;" text="Place Order " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="513.0" layoutY="364.0" onAction="#btnReturnOnAction" prefHeight="43.0" prefWidth="163.0" style="-fx-background-color: black;" text="Return Items" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="512.0" layoutY="451.0" onAction="#btnAddSupplierOnAction" prefHeight="43.0" prefWidth="163.0" style="-fx-background-color: black;" text="Supplier Form" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashboardFormController">
+   <left>
+      <AnchorPane prefHeight="675.0" prefWidth="246.0" style="-fx-background-color: #3d59d6;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="23.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutX="23.0" layoutY="148.0" prefHeight="42.0" prefWidth="199.0" style="-fx-background-color: white;" text="Dashboard" textFill="#4375e1">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="31.0" fitWidth="27.0" layoutX="36.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icon/dashboard-icon/Content.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutX="23.0" layoutY="233.0" onAction="#btnEmployeeOnAction" prefHeight="42.0" prefWidth="199.0" style="-fx-background-color: white;" text="Employee" textFill="#4375e1">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="31.0" fitWidth="27.0" layoutX="36.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icon/dashboard-icon/Lawyer.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutX="23.0" layoutY="316.0" onAction="#btnSppliersOnAction" prefHeight="42.0" prefWidth="199.0" style="-fx-background-color: white;" text="Suppliers" textFill="#4375e1">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="31.0" fitWidth="27.0" layoutX="36.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icon/dashboard-icon/Package.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutX="23.0" layoutY="397.0" onAction="#btnOrdersOnAction" prefHeight="42.0" prefWidth="199.0" style="-fx-background-color: white;" text="Orders" textFill="#4375e1">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="31.0" fitWidth="27.0" layoutX="36.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icon/dashboard-icon/Purchase%20Order.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutX="23.0" layoutY="469.0" onAction="#btnShopOnAction" prefHeight="42.0" prefWidth="199.0" style="-fx-background-color: white;" text="Shop" textAlignment="CENTER" textFill="#4375e1">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="31.0" fitWidth="27.0" layoutX="36.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icon/dashboard-icon/Sell%20Stock.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

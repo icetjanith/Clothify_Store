@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SupplierFormController">
+   <children>
+      <ImageView fitHeight="558.0" fitWidth="835.0" opacity="0.78" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/freepik__expand__5210.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="33.0" layoutY="28.0" prefHeight="38.0" prefWidth="177.0" text="Supplier Form">
+         <font>
+            <Font name="System Bold Italic" size="26.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="searchBox" layoutX="610.0" layoutY="34.0" prefHeight="26.0" prefWidth="187.0" promptText="Search" unFocusColor="#2d68cc">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="name" layoutX="33.0" layoutY="141.0" prefHeight="26.0" prefWidth="187.0" promptText="Name">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="email" layoutX="33.0" layoutY="197.0" prefHeight="26.0" prefWidth="187.0" promptText="Email">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="contactNumber" layoutX="33.0" layoutY="252.0" prefHeight="26.0" prefWidth="187.0" promptText="Contact No.">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="nicNumber" layoutX="33.0" layoutY="306.0" prefHeight="26.0" prefWidth="187.0" promptText="Nic">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </JFXTextField>
+      <TableView fx:id="tblAllSuppliers" layoutX="290.0" layoutY="319.0" opacity="0.7" prefHeight="202.0" prefWidth="514.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tblSupplierDetails" layoutX="290.0" layoutY="160.0" opacity="0.7" prefHeight="152.0" prefWidth="514.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="C1" />
+            <TableColumn prefWidth="75.0" text="C2" />
+         </columns>
+      </TableView>
+      <JFXTextField fx:id="companyName" layoutX="33.0" layoutY="364.0" prefHeight="26.0" prefWidth="187.0" promptText="Company Name">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton layoutX="82.0" layoutY="431.0" onAction="#btnAddOnAction" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #57b9ff;" text="Add">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="140.0" layoutY="478.0" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #ff2c2c;" text="Delete">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="33.0" layoutY="478.0" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #89f336;" text="Update">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </JFXButton>
+      <Separator layoutX="22.0" layoutY="72.0" prefWidth="200.0" style="-fx-background-color: black;" />
+      <ImageView fx:id="searchIcon" fitHeight="26.0" fitWidth="22.0" layoutX="768.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/magnifying-glass.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
