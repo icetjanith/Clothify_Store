@@ -26,6 +26,8 @@ public class BoFactory {
                 return (T)new OrderServiceImpl();
             case SUPPLIER:
                 return (T)new SupplierServiceImpl();
+            case PLACEORDER:
+                return (T)new PlaceOrderServiceImpl();
             default :
                 return null;
         }

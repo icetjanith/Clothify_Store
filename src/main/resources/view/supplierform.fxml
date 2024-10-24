@@ -81,7 +81,7 @@
          </font>
       </JFXButton>
       <Separator layoutX="22.0" layoutY="72.0" prefWidth="200.0" style="-fx-background-color: black;" />
-      <ImageView fx:id="searchIcon" fitHeight="26.0" fitWidth="22.0" layoutX="768.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="searchIcon" fitHeight="26.0" fitWidth="22.0" layoutX="768.0" layoutY="34.0" onMouseClicked="#imgOnMouseClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/magnifying-glass.png" />
          </image>

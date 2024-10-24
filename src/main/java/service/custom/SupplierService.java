@@ -1,6 +1,7 @@
 package service.custom;
 
 import dto.Customer;
+import dto.Item;
 import dto.Supplier;
 import javafx.collections.ObservableList;
 import service.SuperBo;
@@ -15,4 +16,6 @@ public interface SupplierService extends SuperBo {
     boolean deleteSupplierById(String text);
 
     boolean updateSupplier(Supplier supplier);
+
+    Supplier searchItem(String text);
 }

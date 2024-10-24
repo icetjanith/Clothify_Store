@@ -1,8 +1,6 @@
 package controller;
 
-import dto.CartTM;
-import dto.Customer;
-import dto.Item;
+import dto.*;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -15,14 +13,19 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import service.BoFactory;
+import service.SuperBo;
 import service.custom.CustomerService;
 import service.custom.ItemService;
+import service.custom.PlaceOrderService;
 import util.ServiceType;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class PlaceOrderFormController implements Initializable {
@@ -150,7 +153,7 @@ public class PlaceOrderFormController implements Initializable {
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
 
-        String itemCode = cmbItemCode.getValue();
+        String itemCode = txtItemDescription1.getText();
         String description = txtItemDescription.getText();
         Integer qty = Integer.parseInt(txtQty.getText());
         Double unitPrice = Double.parseDouble(txtUnitPrice.getText());
@@ -162,14 +165,32 @@ public class PlaceOrderFormController implements Initializable {
             cartTMS.add(new CartTM(itemCode,description,qty,unitPrice,total));
             calcNetTotal();
         }
-
-
-
-
         tblCart.setItems(cartTMS);
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
+        PlaceOrderService placeOrderService = BoFactory.getInstance().getServiceType(ServiceType.PLACEORDER);
+        List<OrderDetail>orderDetailList=new ArrayList<>();
+        cartTMS.forEach(orderDetail->{
+           orderDetailList.add(new OrderDetail(txtOrderId.getText(),txtItemDescription1.getText(),orderDetail.getQty(),orderDetail.getTotal()));
+        });
+        Order order=new Order(
+                txtOrderId.getText(),
+                LocalDate.parse(lblDate.getText()),
+                txtCustomerId.getText(),
+                1,
+                orderDetailList
+        );
+        try{
+            boolean placeOrder = placeOrderService.PlaceOrder(order);
+            if (placeOrder) {
+                new Alert(Alert.AlertType.INFORMATION, "Order Placed Successfully !").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR,"Order Placed Failure !").show();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void btnCommitOnAction(ActionEvent actionEvent) {
@@ -194,9 +215,7 @@ public class PlaceOrderFormController implements Initializable {
                 txtCustomerId.setText(customer.getId());
                 txtCustomerName.setText(customer.getName());
                 txtCustomerAddress.setText(customer.getAddress());
-                found=true;
                 return;
-
             }
         }
         if(!found){

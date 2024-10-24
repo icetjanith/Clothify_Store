@@ -12,4 +12,6 @@ public interface ItemService extends SuperBo {
     boolean deleteItemById(String text);
 
     boolean updateItem(Item item);
+
+    Item searchItem(String text);
 }

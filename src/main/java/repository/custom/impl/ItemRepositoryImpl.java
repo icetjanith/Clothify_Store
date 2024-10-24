@@ -71,6 +71,23 @@ public class ItemRepositoryImpl implements ItemRepository {
 
     @Override
     public ItemEntity search(String id) {
+        Session session = null;
+        try{
+            session = HibernateUtil.getSession();
+            session.beginTransaction();
+            String sql = "SELECT * FROM items WHERE itemCode = ?";
+            Query query = session.createNativeQuery(sql, ItemEntity.class);
+            query.setParameter(1, id);
+            ItemEntity singleResult = (ItemEntity) query.getSingleResult();
+            session.getTransaction().commit();
+            return singleResult;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());;
+        }finally {
+            if (session!= null) {
+                session.close();
+            }
+        }
         return null;
     }
 }

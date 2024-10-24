@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import dto.Customer;
 import dto.Item;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +13,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import service.BoFactory;
 import service.custom.ItemService;
 import util.ServiceType;
@@ -22,8 +25,9 @@ import java.util.ResourceBundle;
 public class ItemFormController implements Initializable {
     public TableColumn colCategory;
     public JFXTextField txtSearchItem;
-    public JFXComboBox category;
+    public JFXComboBox<String> category;
     public JFXTextField supplierId;
+    public ImageView searchImg;
     @FXML
     private TableColumn<?, ?> colDescription;
 
@@ -66,6 +70,13 @@ public class ItemFormController implements Initializable {
         colPackSize.setCellValueFactory(new PropertyValueFactory<>("packSize"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+
+        ObservableList<String> categoryList = FXCollections.observableArrayList();
+        categoryList.add("Male");
+        categoryList.add("Female");
+        categoryList.add("Kids");
+        category.setItems(categoryList);
 
         tblItems.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, newValue) -> {
             if(newValue!=null){
@@ -76,6 +87,8 @@ public class ItemFormController implements Initializable {
 
         loadTable();
     }
+
+
 
     private void loadTable() {
 
@@ -129,9 +142,9 @@ public class ItemFormController implements Initializable {
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         Item item = new Item(
                 txtItemCode.getText(),
+                category.getValue(),
+                supplierId.getText(),
                 txtDescription.getText(),
-                "Quantity",
-                "Quantity",
                 txtPackSize.getText(),
                 Double.parseDouble(txtUnitPrice.getText()),
                 Integer.parseInt(txtQty.getText())
@@ -147,10 +160,10 @@ public class ItemFormController implements Initializable {
     public void btnDeleteOnAction(ActionEvent actionEvent) {
 
         if(itemService.deleteItemById(txtItemCode.getText())){
-            new Alert(Alert.AlertType.INFORMATION,"Customer deleted successfully!").show();
+            new Alert(Alert.AlertType.INFORMATION,"Item deleted successfully!").show();
 
         }else {
-            new Alert(Alert.AlertType.ERROR,"Customer not deleted").show();
+            new Alert(Alert.AlertType.ERROR,"Item not deleted").show();
 
         }
     }
@@ -160,4 +173,13 @@ public class ItemFormController implements Initializable {
     }
 
 
+    public void imgOnMouseClicked(MouseEvent mouseEvent) {
+        System.out.println("mouse clicked");
+        Item item = itemService.searchItem(txtSearchItem.getText());
+        if(item!=null) {
+            setTextToValues(item);
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Item not found").show();
+        }
+    }
 }

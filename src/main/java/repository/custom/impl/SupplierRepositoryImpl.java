@@ -2,6 +2,7 @@ package repository.custom.impl;
 
 import entity.CustomerEntity;
 import entity.SupplierEntity;
+import jakarta.persistence.Query;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
 import repository.custom.SupplierRepository;
@@ -64,6 +65,23 @@ public class SupplierRepositoryImpl implements SupplierRepository {
 
     @Override
     public SupplierEntity search(String id) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSession();
+            session.beginTransaction();
+            String sql="SELECT*FROM suppliers WHERE supplier_id=?";
+            Query query =session.createNativeQuery(sql,SupplierEntity.class);
+            query.setParameter(1, id);
+            SupplierEntity supplierEntity = (SupplierEntity) query.getSingleResult();
+            session.getTransaction().commit();
+            return supplierEntity;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally {
+            if (session!= null) {
+                session.close();
+            }
+        }
         return null;
     }
 }

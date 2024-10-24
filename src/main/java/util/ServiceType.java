@@ -2,5 +2,5 @@ package util;
 
 public enum ServiceType {
 
-    USER,CUSTOMER,ITEM,ORDER,SUPPLIER
+    USER,CUSTOMER,ITEM,ORDER,SUPPLIER,PLACEORDER
 }

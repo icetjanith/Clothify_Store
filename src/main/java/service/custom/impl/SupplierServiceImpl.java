@@ -49,4 +49,10 @@ public class SupplierServiceImpl implements SupplierService {
     public boolean updateSupplier(Supplier supplier) {
         return false;
     }
+
+    @Override
+    public Supplier searchItem(String text) {
+        SupplierEntity supplierEntity = supplierRepository.search(text);
+        return supplierEntity!=null ? modelMapper.map(supplierEntity, Supplier.class):null;
+    }
 }

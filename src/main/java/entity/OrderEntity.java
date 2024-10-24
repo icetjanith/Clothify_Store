@@ -1,9 +1,7 @@
 package entity;
 
 import dto.OrderDetail;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,11 +13,16 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "orders")
 public class OrderEntity {
     @Id
     private String orderId;
     private LocalDate orderDate;
-    private String customerId;
-    List<OrderDetail> orderDetails;
+    @ManyToOne
+    @JoinColumn(name = "customerId", referencedColumnName ="id")
+    private CustomerEntity customerId;
+    @ManyToOne
+    @JoinColumn(name = "employeeId", referencedColumnName ="id")
+    private UserEntity employeeId;
+    @OneToMany(mappedBy = "order")
+    private List<OrderDetailsEntity> orderDetails;
 }

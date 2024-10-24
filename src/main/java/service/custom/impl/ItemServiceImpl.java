@@ -37,4 +37,14 @@ public class ItemServiceImpl implements ItemService {
     public boolean updateItem(Item item) {
         return false;
     }
+
+    @Override
+    public Item searchItem(String text) {
+        ItemEntity itemEntity = itemRepository.search(text);
+        if (itemEntity != null) {
+             return modelMapper.map(itemEntity, Item.class);
+        } else {
+            return null;
+        }
+    }
 }

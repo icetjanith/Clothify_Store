@@ -1,7 +1,6 @@
 package entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,10 +9,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "orderdetails")
 public class OrderDetailsEntity {
-    private String orderId;
-    private String itemCode;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer orederDetailId;
+    @ManyToOne
+    @JoinColumn(name = "orderId",referencedColumnName = "orderId")
+    private OrderEntity order;
+    @ManyToOne
+    @JoinColumn(name = "itemCode", referencedColumnName = "itemCode")
+    private ItemEntity item;
     private Integer qty;
     private Double discount;
 }

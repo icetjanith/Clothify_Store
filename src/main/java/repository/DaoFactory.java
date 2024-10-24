@@ -1,9 +1,6 @@
 package repository;
 
-import repository.custom.impl.CustomerRepositoryImpl;
-import repository.custom.impl.ItemRepositoryImpl;
-import repository.custom.impl.SupplierRepositoryImpl;
-import repository.custom.impl.UserRepositoryImpl;
+import repository.custom.impl.*;
 import service.custom.impl.CustomerServiceImpl;
 import service.custom.impl.SupplierServiceImpl;
 import util.DaoType;
@@ -25,6 +22,8 @@ public class DaoFactory {
                 return (T)new ItemRepositoryImpl();
             case SUPPLIER:
                 return (T)new SupplierRepositoryImpl();
+            case PLACEORDER:
+                return (T) new PlaceOrderRepositoryImpl();
             default:
                 return null;
         }
